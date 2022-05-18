@@ -1,0 +1,30 @@
+{
+  "name": "ami-aude",
+  "version": "1.0.0",
+  "description": "API_AMI_AUDE",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoCanet/AMI-AUDE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoCanet/AMI-AUDE/issues"
+  },
+  "homepage": "https://github.com/LeoCanet/AMI-AUDE#readme",
+  "dependencies": {
+    "@angular/material": "^13.3.7",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.16",
+    "rxjs": "^7.5.5"
+  }
+}
