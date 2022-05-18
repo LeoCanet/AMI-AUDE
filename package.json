@@ -2,7 +2,7 @@
   "name": "ami-aude",
   "version": "1.0.0",
   "description": "API_AMI_AUDE",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
