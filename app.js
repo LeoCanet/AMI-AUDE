@@ -1,33 +1,40 @@
 const http = require("http");
 const hostname = "127.0.0.1";
 const port = 4000;
-require('dotenv').config();
+const express = require("express");
+const app = express();
+const mysql = require("mysql");
+const bodyparser = require('body-parser');
+require("dotenv").config();
+const crudRoute = require('./utilisateurs/utilisateurs.routes');
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/plain");
-  res.end(process.env.DB_USER);
-});
+app.use(bodyparser.json());
 
-server.listen(port, hostname, () => {
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+
+app.use('/', crudRoute);
+
+app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
-
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host     : process.env.DB_HOST,
-  user     : process.env.DB_USER,
-  password : process.env.DB_PASSWORD,
-  port     : process.env.DB_PORT,
-  database : process.env.DB_BDD
+const connexion = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  database: process.env.DB_BDD,
 });
 
-connection.connect(function(err) {
+connexion.connect(function (err) {
   if (err) {
-    console.error('error connecting: ' + err.stack);
+    console.error("error connecting: " + err.stack);
     return;
   }
- 
-  console.log('Vous êtes connecté à la BDD avec ID ' + connection.threadId);
+
+  console.log("Vous êtes connecté à la BDD avec ID " + connexion.threadId);
 });
