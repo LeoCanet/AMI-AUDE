@@ -1,17 +1,15 @@
-const controller = {};
 
-controller.list = (req, res) => {
-  req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM Enjeu_1", (err, users) => {
-      if (err) {
-        res.json(err);
-      }
-      res.render("users", {
-        data: users,
-      });
+const Users = require("../utilisateurs/utilisateurs.model");
+
+// Réupère tous les Utilisateurs
+exports.findAll = (req, res) => {  
+    Users.findAll((err, data) => {
+      if (err)
+        res.status(500).send({
+          message:
+            err.message || "Une erreur est survenue"
+        });
+      else res.send(data);
     });
-  });
-};
+  };
 
-
-module.exports = controller;
