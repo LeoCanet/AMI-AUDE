@@ -3,15 +3,11 @@ const db = require("../db");
 // Constructeur des utilisateurs
 const Users = function (users) {
     this.referent = users.referent;
-    this.operateur = users.operateur;
-    this.secteur = secteur.operateur;
-    this.usagers = users.usagers;
-    this.intitule = users.intitule;
-    this.dateFin = users.dateFin;
 }
 
+// Récupère tous les Users
 Users.findAll = result => {
-    db.query("SELECT * FROM Enjeu_1", (err, res) => {
+    db.query("SELECT * FROM Utilisateurs", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
