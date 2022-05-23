@@ -4,7 +4,13 @@ const app = express();
 const bodyparser = require('body-parser');
 require("dotenv").config();
 const db = require("./db");
+const cors = require("cors");
 
+var corsOptions = {
+  origin: "http://localhost:4200"
+};
+
+app.use(cors(corsOptions));
 app.use(bodyparser.json());
 app.use(
   express.urlencoded({
@@ -12,10 +18,10 @@ app.use(
   })
 );
 
-// const crudRoute = require('./utilisateurs/utilisateurs.routes');
-// app.use('/', crudRoute);
-// Récupère les fichiers angular dans le dossier static
-app.use(express.static('static'));
+const crudRoute = require('./utilisateurs/utilisateurs.routes');
+app.use('/', crudRoute);
+
+require("./utilisateurs/utilisateurs.routes");
 
 const hostname = "127.0.0.1";
 const port = 4002;
