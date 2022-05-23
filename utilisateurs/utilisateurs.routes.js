@@ -9,6 +9,6 @@ router.put("/utilisateurs-update", UsersController.update);
 
 router.get("/utilisateurs/:id", UsersController.findOne);
 
-router.post("/utilisateurs-add", UsersController.create);
+router.post("/utilisateurs-add", UsersController.addUser);
 
 module.exports = router;

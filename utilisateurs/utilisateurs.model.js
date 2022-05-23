@@ -25,10 +25,10 @@ Users.findAll = (result) => {
 };
 
 // Create un utilisateur
-Users.create = (result, nom, prenom, dateNaissance, email) => {
+Users.addUser = (result, nom, prenom, dateNaissance, email) => {
+  console.log("result: ", prenom);
   db.query(
-    `INSERT INTO Utilisateurs (id, Nom, Prenom, Date_de_naissance, Email) VALUES (NULL, ${nom}, ${prenom}, ${dateNaissance}, ${email})`,
-    (err, res) => {
+    `INSERT INTO Utilisateurs (id, Nom, Prenom, Date_de_naissance, Email) VALUES (NULL, 'Monfort', 'Audrey', '2022-05-23 12:18:10.000000', 'audrey.monfort@gmail.com');`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
@@ -37,8 +37,7 @@ Users.create = (result, nom, prenom, dateNaissance, email) => {
 
       console.log("Users: ", res);
       result(null, res);
-    }
-  );
+    });
 };
 
 // Read un utilisateur
@@ -59,7 +58,7 @@ Users.findOne = (result, id) => {
 // Update un utilisateur
 Users.update = (result, id, nom) => {
   db.query(
-    `UPDATE Utilisateurs SET Nom = ${nom} WHERE id ${id}`,
+    `UPDATE Utilisateurs SET Nom = ${nom} WHERE Utilisateurs.id = ${id};`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -76,7 +75,7 @@ Users.update = (result, id, nom) => {
 // Delete un utilisateur
 Users.delete = (result, id) => {
   console.log("result: ", id);
-  db.query(`DELETE FROM Utilisateurs WHERE id = ${id}`, (err, res) => {
+  db.query(`DELETE FROM Utilisateurs WHERE id = 2`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

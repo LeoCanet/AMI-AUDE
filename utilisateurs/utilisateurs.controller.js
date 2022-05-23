@@ -14,19 +14,26 @@ exports.findAll = (req, res) => {
   };
 
 // Create un utilisateur
-exports.create = (req, res) => {
+exports.addUser = (req, res) => {
   let user_nom = req.body.Nom;
   let user_prenom = req.body.Prenom;
   let user_birth = req.body.Date_de_naissance;
   let user_mail = req.body.Email;
-  Users.create((err, data) => {
+  // if (!req.body.title) {
+  //   res.status(400).send({
+  //     message: "Content can not be empty!"
+  //   });
+  //   return;
+  // }
+  console.log("TEST--------------------: ", user_nom)
+  Users.addUser((err, data) => {
     if (err)
       res.status(500).send({
         message:
           err.message || "Une erreur est survenue"
       });
     else res.send(data);
-  })(user_nom, user_prenom, user_birth, user_mail);
+  },(user_nom, user_prenom, user_birth, user_mail));
 };
 
 // Read un utilisateur
