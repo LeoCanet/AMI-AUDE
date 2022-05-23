@@ -1,6 +1,6 @@
 const db = require("../db");
 
-// Constructeur des utilisateurs
+// Constructor des utilisateurs
 const Users = function (id, nom, prenom, dateDeNaissance, email) {
   this.id = id;
   this.nom = nom;
@@ -24,6 +24,7 @@ Users.findAll = (result) => {
   });
 };
 
+// Create un utilisateur
 Users.create = (result, nom, prenom, dateNaissance, email) => {
   db.query(
     `INSERT INTO Utilisateurs (id, Nom, Prenom, Date_de_naissance, Email) VALUES (NULL, ${nom}, ${prenom}, ${dateNaissance}, ${email})`,
@@ -40,6 +41,22 @@ Users.create = (result, nom, prenom, dateNaissance, email) => {
   );
 };
 
+// Read un utilisateur
+Users.findOne = (result, id) => {
+  console.log("result: ", id);
+  db.query(`SELECT * FROM Utilisateurs where id = ${id}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("Users: ", res);
+    result(null, res);
+  });
+};
+
+// Update un utilisateur
 Users.update = (result, id, nom) => {
   db.query(
     `UPDATE Utilisateurs SET Nom = ${nom} WHERE id ${id}`,
@@ -56,20 +73,7 @@ Users.update = (result, id, nom) => {
   );
 };
 
-Users.findOne = (result, id) => {
-  console.log("result: ", id);
-  db.query(`SELECT * FROM Utilisateurs where id = ${id}`, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("Users: ", res);
-    result(null, res);
-  });
-};
-
+// Delete un utilisateur
 Users.delete = (result, id) => {
   console.log("result: ", id);
   db.query(`DELETE FROM Utilisateurs WHERE id = ${id}`, (err, res) => {

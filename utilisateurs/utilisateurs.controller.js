@@ -13,7 +13,7 @@ exports.findAll = (req, res) => {
     });
   };
 
-// Créer un utilisateur
+// Create un utilisateur
 exports.create = (req, res) => {
   let user_nom = req.body.Nom;
   let user_prenom = req.body.Prenom;
@@ -29,21 +29,7 @@ exports.create = (req, res) => {
   })(user_nom, user_prenom, user_birth, user_mail);
 };
 
-// Update un utilisateur
-exports.update = (req, res) => {
-  let user_id = req.body.id;
-  let user_nom = req.body.Nom;
-  Users.update((err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Une erreur est survenue"
-      });
-    else res.send(data);
-  },(user_id, user_nom));
-};
-
-// Find un utilisateur
+// Read un utilisateur
 exports.findOne = (req, res) => {
   let user_id = req.params.id;
   console.log("test:", user_id)
@@ -56,6 +42,20 @@ exports.findOne = (req, res) => {
     else res.send(data);
   },(user_id))
 
+};
+
+// Update un utilisateur
+exports.update = (req, res) => {
+  let user_id = req.body.id;
+  let user_nom = req.body.Nom;
+  Users.update((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Une erreur est survenue"
+      });
+    else res.send(data);
+  },(user_id, user_nom));
 };
 
 // Delete un utilisateur
