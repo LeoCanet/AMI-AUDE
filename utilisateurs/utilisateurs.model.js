@@ -19,23 +19,23 @@ Users.findAll = (result) => {
       return;
     }
 
-    console.log("Users: ", res);
+    // console.log("Users: ", res);
     result(null, res);
   });
 };
 
 // Create un utilisateur
 Users.addUser = (result, nom, prenom, dateNaissance, email) => {
-  console.log("result: ", prenom);
+  console.log("prenom: ", nom);
   db.query(
-    `INSERT INTO Utilisateurs (id, Nom, Prenom, Date_de_naissance, Email) VALUES (NULL, 'Monfort', 'Audrey', '2022-05-23 12:18:10.000000', 'audrey.monfort@gmail.com');`, (err, res) => {
+    `INSERT INTO Utilisateurs (id, Nom, Prenom, Date_de_naissance, Email) VALUES (NULL, '${nom}', '${prenom}', '${dateNaissance}', '${email}')`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
         return;
       }
 
-      console.log("Users: ", res);
+      // console.log("Users: ", res);
       result(null, res);
     });
 };
@@ -50,7 +50,7 @@ Users.findOne = (result, id) => {
       return;
     }
 
-    console.log("Users: ", res);
+    // console.log("Users: ", res);
     result(null, res);
   });
 };
@@ -66,7 +66,7 @@ Users.update = (result, id, nom) => {
         return;
       }
 
-      console.log("Users: ", res);
+      // console.log("Users: ", res);
       result(null, res);
     }
   );
@@ -82,7 +82,7 @@ Users.delete = (result, id) => {
       return;
     }
 
-    console.log("Users: ", res);
+    // console.log("Users: ", res);
     result(null, res);
   });
 };

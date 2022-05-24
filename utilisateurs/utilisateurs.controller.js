@@ -15,25 +15,26 @@ exports.findAll = (req, res) => {
 
 // Create un utilisateur
 exports.addUser = (req, res) => {
-  let user_nom = req.body.Nom;
-  let user_prenom = req.body.Prenom;
-  let user_birth = req.body.Date_de_naissance;
-  let user_mail = req.body.Email;
+  let user_nom = req.body.nom;
+  let user_prenom = req.body.prenom;
+  let user_birth = req.body.dateNaissance;
+  let user_mail = req.body.email;
+   console.log("req----------------: ", req.body)
   // if (!req.body.title) {
   //   res.status(400).send({
   //     message: "Content can not be empty!"
   //   });
   //   return;
   // }
-  console.log("TEST--------------------: ", user_nom)
   Users.addUser((err, data) => {
+    console.log(err)
     if (err)
       res.status(500).send({
         message:
           err.message || "Une erreur est survenue"
       });
     else res.send(data);
-  },(user_nom, user_prenom, user_birth, user_mail));
+    },(user_nom),(user_prenom),(user_birth), (user_mail));
 };
 
 // Read un utilisateur
@@ -54,7 +55,7 @@ exports.findOne = (req, res) => {
 // Update un utilisateur
 exports.update = (req, res) => {
   let user_id = req.body.id;
-  let user_nom = req.body.Nom;
+  let user_nom = req.body.nom;
   Users.update((err, data) => {
     if (err)
       res.status(500).send({
@@ -62,7 +63,7 @@ exports.update = (req, res) => {
           err.message || "Une erreur est survenue"
       });
     else res.send(data);
-  },(user_id, user_nom));
+  },(user_id), (user_nom));
 };
 
 // Delete un utilisateur
