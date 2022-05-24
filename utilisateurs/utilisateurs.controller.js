@@ -1,17 +1,15 @@
-
 const Users = require("../utilisateurs/utilisateurs.model");
 
 // Réupère tous les Utilisateurs
-exports.findAll = (req, res) => {  
-    Users.findAll((err, data) => {
-      if (err)
-        res.status(500).send({
-          message:
-            err.message || "Une erreur est survenue"
-        });
-      else res.send(data);
-    });
-  };
+exports.findAll = (req, res) => {
+  Users.findAll((err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Une erreur est survenue",
+      });
+    else res.send(data);
+  });
+};
 
 // Create un utilisateur
 exports.addUser = (req, res) => {
@@ -25,15 +23,20 @@ exports.addUser = (req, res) => {
   //   });
   //   return;
   // }
-  Users.addUser((err, data) => {
-    console.log(err)
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Une erreur est survenue"
-      });
-    else res.send(data);
-    },(user_nom),(user_prenom),(user_birth), (user_mail));
+  Users.addUser(
+    (err, data) => {
+      console.log(err);
+      if (err)
+        res.status(500).send({
+          message: err.message || "Une erreur est survenue",
+        });
+      else res.send(data);
+    },
+    user_nom,
+    user_prenom,
+    user_birth,
+    user_mail
+  );
 };
 
 // Read un utilisateur
@@ -42,26 +45,27 @@ exports.findOne = (req, res) => {
   Users.findOne((err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Une erreur est survenue"
+        message: err.message || "Une erreur est survenue",
       });
     else res.send(data);
-  },(user_id))
-
+  }, user_id);
 };
 
 // Update un utilisateur
 exports.update = (req, res) => {
   let user_id = req.body.id;
   let user_nom = req.body.nom;
-  Users.update((err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Une erreur est survenue"
-      });
-    else res.send(data);
-  },(user_id), (user_nom));
+  Users.update(
+    (err, data) => {
+      if (err)
+        res.status(500).send({
+          message: err.message || "Une erreur est survenue",
+        });
+      else res.send(data);
+    },
+    user_id,
+    user_nom
+  );
 };
 
 // Delete un utilisateur
@@ -70,9 +74,8 @@ exports.delete = (req, res) => {
   Users.delete((err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Une erreur est survenue"
+        message: err.message || "Une erreur est survenue",
       });
     else res.send(data);
-  },(user_id));
+  }, user_id);
 };
