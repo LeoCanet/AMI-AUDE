@@ -19,7 +19,6 @@ exports.addUser = (req, res) => {
   let user_prenom = req.body.prenom;
   let user_birth = req.body.dateNaissance;
   let user_mail = req.body.email;
-   console.log("req----------------: ", req.body)
   // if (!req.body.title) {
   //   res.status(400).send({
   //     message: "Content can not be empty!"
@@ -40,7 +39,6 @@ exports.addUser = (req, res) => {
 // Read un utilisateur
 exports.findOne = (req, res) => {
   let user_id = req.params.id;
-  console.log("test:", user_id)
   Users.findOne((err, data) => {
     if (err)
       res.status(500).send({
@@ -69,7 +67,6 @@ exports.update = (req, res) => {
 // Delete un utilisateur
 exports.delete = (req, res) => {
   let user_id = req.body.id;
-  console.log("test:", user_id)
   Users.delete((err, data) => {
     if (err)
       res.status(500).send({

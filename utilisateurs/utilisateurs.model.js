@@ -26,7 +26,6 @@ Users.findAll = (result) => {
 
 // Create un utilisateur
 Users.addUser = (result, nom, prenom, dateNaissance, email) => {
-  console.log("prenom: ", nom);
   db.query(
     `INSERT INTO Utilisateurs (id, Nom, Prenom, Date_de_naissance, Email) VALUES (NULL, '${nom}', '${prenom}', '${dateNaissance}', '${email}')`, (err, res) => {
       if (err) {
@@ -42,7 +41,6 @@ Users.addUser = (result, nom, prenom, dateNaissance, email) => {
 
 // Read un utilisateur
 Users.findOne = (result, id) => {
-  console.log("result: ", id);
   db.query(`SELECT * FROM Utilisateurs where id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -74,7 +72,6 @@ Users.update = (result, id, nom) => {
 
 // Delete un utilisateur
 Users.delete = (result, id) => {
-  console.log("result: ", id);
   db.query(`DELETE FROM Utilisateurs WHERE id = 2`, (err, res) => {
     if (err) {
       console.log("error: ", err);
