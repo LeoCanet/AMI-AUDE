@@ -42,6 +42,7 @@ exports.addUser = (req, res) => {
 // Read un utilisateur
 exports.findOne = (req, res) => {
   let user_id = req.params.id;
+  console.log("TEST:___________",user_id)
   Users.findOne((err, data) => {
     if (err)
       res.status(500).send({
@@ -53,8 +54,12 @@ exports.findOne = (req, res) => {
 
 // Update un utilisateur
 exports.update = (req, res) => {
-  let user_id = req.body.id;
+  let user_id = req.params.id;
   let user_nom = req.body.nom;
+  let user_prenom = req.body.prenom;
+  let user_birth = req.body.dateNaissance;
+  let user_mail = req.body.email;
+  console.log("TEST:___________",user_id)
   Users.update(
     (err, data) => {
       if (err)
@@ -64,7 +69,10 @@ exports.update = (req, res) => {
       else res.send(data);
     },
     user_id,
-    user_nom
+    user_nom,
+    user_prenom,
+    user_birth,
+    user_mail
   );
 };
 
