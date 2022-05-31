@@ -42,7 +42,6 @@ exports.addUser = (req, res) => {
 // Read un utilisateur
 exports.findOne = (req, res) => {
   let user_id = req.params.id;
-  console.log("TEST:___________",user_id)
   Users.findOne((err, data) => {
     if (err)
       res.status(500).send({
@@ -59,7 +58,6 @@ exports.update = (req, res) => {
   let user_prenom = req.body.prenom;
   let user_birth = req.body.dateNaissance;
   let user_mail = req.body.email;
-  console.log("TEST:___________",user_id)
   Users.update(
     (err, data) => {
       if (err)
@@ -78,7 +76,7 @@ exports.update = (req, res) => {
 
 // Delete un utilisateur
 exports.delete = (req, res) => {
-  let user_id = req.body.id;
+  let user_id = req.params.id;
   Users.delete((err, data) => {
     if (err)
       res.status(500).send({
