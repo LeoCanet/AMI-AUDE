@@ -1,17 +1,25 @@
 const db = require("../db");
 
 // Constructor des utilisateurs
-const Users = function (id, nom, prenom, dateDeNaissance, email) {
+const Users = function (
+  id,
+  Referent_RSA,
+  Date_debut,
+  Date_fin,
+  Usagers,
+  Intitule_Action
+) {
   this.id = id;
-  this.nom = nom;
-  this.prenom = prenom;
-  this.dateDeNaissance = dateDeNaissance;
-  this.email = email;
+  this.Referent_RSA = Referent_RSA;
+  this.Date_debut = Date_debut;
+  this.Date_fin = Date_fin;
+  this.Usagers = Usagers;
+  this.Intitule_Action = Intitule_Action;
 };
 
 // Récupère tous les Users
 Users.findAll = (result) => {
-  db.query(`SELECT * FROM Utilisateurs`, (err, res) => {
+  db.query(`SELECT * FROM Enjeu_1`, (err, res) => {
     // if (!user_id) {res.400}
     if (err) {
       console.log("error: ", err);
@@ -24,9 +32,16 @@ Users.findAll = (result) => {
 };
 
 // Create un utilisateur
-Users.addUser = (result, nom, prenom, dateNaissance, email) => {
+Users.addUser = (
+  result,
+  Referent_RSA,
+  Date_debut,
+  Date_fin,
+  Usagers,
+  Intitule_Action
+) => {
   db.query(
-    `INSERT INTO Utilisateurs (id, Nom, Prenom, Date_de_naissance, Email) VALUES (NULL, '${nom}', '${prenom}', '${dateNaissance}', '${email}')`,
+    `INSERT INTO Enjeu_1 (id, Referent_RSA, Date_debut, Date_fin, Usagers, Intitule_Action) VALUES (NULL, '${Referent_RSA}', '${Date_debut}', '${Date_fin}', '${Usagers}', '${Intitule_Action}')`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -42,7 +57,7 @@ Users.addUser = (result, nom, prenom, dateNaissance, email) => {
 
 // Read un utilisateur
 Users.findOne = (result, id) => {
-  db.query(`SELECT * FROM Utilisateurs where id = ${id}`, (err, res) => {
+  db.query(`SELECT * FROM Enjeu_1 where id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -55,9 +70,17 @@ Users.findOne = (result, id) => {
 };
 
 // Update un utilisateur
-Users.update = (result, id, nom, prenom, dateNaissance, email ) => {
+Users.update = (
+  result,
+  id,
+  Referent_RSA,
+  Date_debut,
+  Date_fin,
+  Usagers,
+  Intitule_Action
+) => {
   db.query(
-    `UPDATE Utilisateurs SET Nom = '${nom}', Prenom = '${prenom}', Date_de_naissance = '${dateNaissance}}', Email = '${email}' WHERE Utilisateurs.id = ${id};`,
+    `UPDATE Enjeu_1 SET Referent_RSA = '${Referent_RSA}', Date_debut = '${Date_debut}', Date_fin = '${Date_fin}', Usagers = '${Usagers}', Intitule_Action = '${Intitule_Action}' WHERE Enjeu_1.id = ${id};`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -73,7 +96,7 @@ Users.update = (result, id, nom, prenom, dateNaissance, email ) => {
 
 // Delete un utilisateur
 Users.delete = (result, id) => {
-  db.query(`DELETE FROM Utilisateurs WHERE id = ${id}`, (err, res) => {
+  db.query(`DELETE FROM Enjeu_1 WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

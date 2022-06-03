@@ -13,10 +13,11 @@ exports.findAll = (req, res) => {
 
 // Create un utilisateur
 exports.addUser = (req, res) => {
-  let user_nom = req.body.nom;
-  let user_prenom = req.body.prenom;
-  let user_birth = req.body.dateNaissance;
-  let user_mail = req.body.email;
+  let Referent_RSA = req.body.Referent_RSA;
+  let Date_debut = req.body.Date_debut;
+  let Date_fin = req.body.Date_fin;
+  let Usagers = req.body.Usagers;
+  let Intitule_Action = req.body.Intitule_Action;
   // if (!req.body.title) {
   //   res.status(400).send({
   //     message: "Content can not be empty!"
@@ -32,10 +33,11 @@ exports.addUser = (req, res) => {
         });
       else res.send(data);
     },
-    user_nom,
-    user_prenom,
-    user_birth,
-    user_mail
+    Referent_RSA,
+    Date_debut,
+    Date_fin,
+    Usagers,
+    Intitule_Action
   );
 };
 
@@ -54,10 +56,11 @@ exports.findOne = (req, res) => {
 // Update un utilisateur
 exports.update = (req, res) => {
   let user_id = req.params.id;
-  let user_nom = req.body.nom;
-  let user_prenom = req.body.prenom;
-  let user_birth = req.body.dateNaissance;
-  let user_mail = req.body.email;
+  let Referent_RSA = req.body.Referent_RSA;
+  let Date_debut = req.body.Date_debut;
+  let Date_fin = req.body.Date_fin;
+  let Usagers = req.body.Usagers;
+  let Intitule_Action = req.body.Intitule_Action;
   Users.update(
     (err, data) => {
       if (err)
@@ -67,10 +70,11 @@ exports.update = (req, res) => {
       else res.send(data);
     },
     user_id,
-    user_nom,
-    user_prenom,
-    user_birth,
-    user_mail
+    Referent_RSA,
+    Date_debut,
+    Date_fin,
+    Usagers,
+    Intitule_Action
   );
 };
 
