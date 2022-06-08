@@ -1,7 +1,7 @@
 const db = require("../db");
 
 // Constructor des utilisateurs
-const Users = function (
+const Users2 = function (
   id,
   Referent_RSA,
   Date_debut,
@@ -17,9 +17,9 @@ const Users = function (
   this.Intitule_Action = Intitule_Action;
 };
 
-// Récupère tous les Users
-Users.findAll = (result) => {
-  db.query(`SELECT Enjeu_1.id, Referent_RSA, Date_debut, Usagers, Usagers.Nom, Usagers.Prenom, Intitule_Action, Date_fin FROM Enjeu_1 INNER JOIN Usagers ON Enjeu_1.usagers = Usagers.id`, (err, res) => {
+// Récupère tous les Users2
+Users2.findAll2 = (result) => {
+  db.query(`SELECT Enjeu_2.id, Referent_RSA, Date_debut, Usagers, Usagers.Nom, Usagers.Prenom, Intitule_Action, Date_fin FROM Enjeu_2 INNER JOIN Usagers ON Enjeu_2.usagers = Usagers.id`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -30,7 +30,7 @@ Users.findAll = (result) => {
 };
 
 // Create un utilisateur
-Users.addUser = (
+Users2.addUser2 = (
   result,
   Referent_RSA,
   Date_debut,
@@ -39,7 +39,7 @@ Users.addUser = (
   Intitule_Action
 ) => {
   db.query(
-    `INSERT INTO Enjeu_1 (id, Referent_RSA, Date_debut, Date_fin, Usagers, Intitule_Action) VALUES (NULL, '${Referent_RSA}', '${Date_debut}', '${Date_fin}', '${Usagers}', '${Intitule_Action}')`,
+    `INSERT INTO Enjeu_2 (id, Referent_RSA, Date_debut, Date_fin, Usagers, Intitule_Action) VALUES (NULL, '${Referent_RSA}', '${Date_debut}', '${Date_fin}', '${Usagers}', '${Intitule_Action}')`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -47,28 +47,28 @@ Users.addUser = (
         return;
       }
 
-      // console.log("Users: ", res);
+      // console.log("Users2: ", res);
       result(null, res);
     }
   );
 };
 
 // Read un utilisateur
-Users.findOne = (result, id) => {
-  db.query(`SELECT * FROM Enjeu_1 where id = ${id}`, (err, res) => {
+Users2.findOne2 = (result, id) => {
+  db.query(`SELECT * FROM Enjeu_2 where id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    // console.log("Users: ", res);
+    // console.log("Users2: ", res);
     result(null, res);
   });
 };
 
 // Update un utilisateur
-Users.update = (
+Users2.update2 = (
   result,
   id,
   Referent_RSA,
@@ -78,7 +78,7 @@ Users.update = (
   Intitule_Action
 ) => {
   db.query(
-    `UPDATE Enjeu_1 SET Referent_RSA = '${Referent_RSA}', Date_debut = '${Date_debut}', Date_fin = '${Date_fin}', Usagers = '${Usagers}', Intitule_Action = '${Intitule_Action}' WHERE Enjeu_1.id = ${id};`,
+    `UPDATE Enjeu_2 SET Referent_RSA = '${Referent_RSA}', Date_debut = '${Date_debut}', Date_fin = '${Date_fin}', Usagers = '${Usagers}', Intitule_Action = '${Intitule_Action}' WHERE Enjeu_2.id = ${id};`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -86,24 +86,24 @@ Users.update = (
         return;
       }
 
-      // console.log("Users: ", res);
+      // console.log("Users2: ", res);
       result(null, res);
     }
   );
 };
 
 // Delete un utilisateur
-Users.delete = (result, id) => {
-  db.query(`DELETE FROM Enjeu_1 WHERE id = ${id}`, (err, res) => {
+Users2.delete2 = (result, id) => {
+  db.query(`DELETE FROM Enjeu_2 WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
       return;
     }
 
-    // console.log("Users: ", res);
+    // console.log("Users2: ", res);
     result(null, res);
   });
 };
 
-module.exports = Users;
+module.exports = Users2;

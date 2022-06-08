@@ -19,7 +19,10 @@ app.use(
 );
 
 const crudRoute = require("./utilisateurs/utilisateurs.routes");
-app.use("/", crudRoute);
+app.use(crudRoute);
+
+const enjeu2Route = require('./enjeu_2/enjeu_2.routes')
+app.use(enjeu2Route);
 
 const hostname = "127.0.0.1";
 const port = 4002;

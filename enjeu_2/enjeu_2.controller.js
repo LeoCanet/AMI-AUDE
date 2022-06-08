@@ -1,8 +1,8 @@
-const Users = require("../utilisateurs/utilisateurs.model");
+const Users2 = require("../enjeu_2/enjeu_2.model");
 
 // Réupère tous les Utilisateurs
-exports.findAll = (req, res) => {
-  Users.findAll((err, data) => {
+exports.findAll2 = (req, res) => {
+  Users2.findAll2((err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Une erreur est survenue",
@@ -12,13 +12,13 @@ exports.findAll = (req, res) => {
 };
 
 // Create un utilisateur
-exports.addUser = (req, res) => {
+exports.addUser2 = (req, res) => {
   let Referent_RSA = req.body.Referent_RSA;
   let Date_debut = req.body.Date_debut;
   let Date_fin = req.body.Date_fin;
   let Usagers = req.body.Usagers;
   let Intitule_Action = req.body.Intitule_Action;
-  Users.addUser(
+  Users2.addUser2(
     (err, data) => {
       console.log(err);
       if (err)
@@ -36,9 +36,9 @@ exports.addUser = (req, res) => {
 };
 
 // Read un utilisateur
-exports.findOne = (req, res) => {
+exports.findOne2 = (req, res) => {
   let user_id = req.params.id;
-  Users.findOne((err, data) => {
+  Users2.findOne2((err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Une erreur est survenue",
@@ -48,14 +48,14 @@ exports.findOne = (req, res) => {
 };
 
 // Update un utilisateur
-exports.update = (req, res) => {
+exports.update2 = (req, res) => {
   let user_id = req.params.id;
   let Referent_RSA = req.body.Referent_RSA;
   let Date_debut = req.body.Date_debut;
   let Date_fin = req.body.Date_fin;
   let Usagers = req.body.Usagers;
   let Intitule_Action = req.body.Intitule_Action;
-  Users.update(
+  Users2.update2(
     (err, data) => {
       if (err)
         res.status(500).send({
@@ -73,9 +73,9 @@ exports.update = (req, res) => {
 };
 
 // Delete un utilisateur
-exports.delete = (req, res) => {
+exports.delete2 = (req, res) => {
   let user_id = req.params.id;
-  Users.delete((err, data) => {
+  Users2.delete2((err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Une erreur est survenue",
